@@ -30,7 +30,7 @@ const HeroSlider: React.FC = () => {
         <img 
           src={SLIDER_IMAGES[currentIndex]} 
           alt={`Slide ${currentIndex}`} 
-          className="w-full h-full object-cover transition-transform duration-500 ease-in-out mask-image-gradient"
+          className="w-full h-full object-cover transition-transform duration-500 ease-in-out"
         />
       </div>
 
