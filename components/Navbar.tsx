@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, ShoppingCart, Menu, User, MapPin } from 'lucide-react';
+import { Search, ShoppingCart, Menu, User, MapPin, ChevronDown } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
 
 interface NavbarProps {
@@ -29,19 +29,26 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenCart }) => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex-grow flex h-10 rounded overflow-hidden mx-2 focus-within:ring-2 focus-within:ring-amazon-search">
-          <select className="bg-gray-100 text-gray-700 text-xs p-1 border-r border-gray-300 outline-none w-auto hidden sm:block cursor-pointer">
-            <option>Tutte</option>
-            <option>Elettronica</option>
-            <option>Casa</option>
-          </select>
+        <div className="flex-grow flex h-10 rounded-md overflow-hidden mx-2 focus-within:ring-3 focus-within:ring-amazon-search/50">
+          {/* Custom Styled Select for "Tutte" */}
+          <div className="relative group bg-gray-100 border-r border-gray-300 hover:bg-gray-200 cursor-pointer hidden sm:flex items-center">
+             <select className="appearance-none bg-transparent text-gray-700 text-xs p-2 pr-6 outline-none cursor-pointer font-medium h-full w-auto min-w-[60px] z-10">
+                <option>Tutte</option>
+                <option>Elettronica</option>
+                <option>Casa</option>
+                <option>Informatica</option>
+                <option>Moda</option>
+              </select>
+              <ChevronDown size={12} className="absolute right-1 text-gray-600 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+
           <input 
             type="text" 
-            className="flex-grow p-2 outline-none text-black" 
+            className="flex-grow p-2 outline-none text-black text-sm" 
             placeholder="Cerca su NexusShop"
           />
-          <button className="bg-amazon-search hover:bg-amazon-ctaHover text-amazon-dark px-4 flex items-center justify-center">
-            <Search size={20} />
+          <button className="bg-amazon-search hover:bg-amazon-ctaHover text-amazon-dark px-4 flex items-center justify-center transition-colors">
+            <Search size={22} />
           </button>
         </div>
 
@@ -75,11 +82,11 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenCart }) => {
       {/* Bottom Navbar Layer (Navigation) */}
       <div className="bg-amazon-light text-white text-sm flex items-center p-1 pl-4 gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
         <div 
-          className="flex items-center gap-1 font-bold hover:border hover:border-white p-1 rounded cursor-pointer"
+          className="flex items-center gap-1 font-bold hover:border hover:border-white p-1 pr-2 rounded cursor-pointer transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <Menu size={20} />
-          <span>Tutte</span>
+          <span className="text-sm font-bold">Tutte</span>
         </div>
         
         {NAV_ITEMS.map((item, index) => (
