@@ -1,17 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = process.env.API_KEY || ''; 
-// Note: In a real app, ensure process.env.API_KEY is available.
-
-const ai = new GoogleGenAI({ apiKey });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 /**
  * Generates a creative product description based on a title and category.
  * Useful for populating empty product cards later.
  */
 export const generateProductDescription = async (title: string, category: string): Promise<string> => {
-  if (!apiKey) return "API Key not configured.";
-
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',

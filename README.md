@@ -8,21 +8,43 @@ NexusShop is a responsive, Amazon-inspired e-commerce frontend skeleton built wi
 - **Hero Slider**: Auto-scrolling hero section with gradient overlays.
 - **Product Grid**: Floating card layout with distinct information boxes and product listings.
 - **Shopping Cart**: Slide-out cart sidebar with a multi-step checkout simulation.
-- **Mock Data**: Pre-configured mock products and constants for easy testing.
-- **Gemini AI Integration**: Service setup for generating product descriptions (configured in `services/geminiService.ts`).
+- **Gemini AI Integration**: Service setup for generating product descriptions.
 
 ## Technologies
 
-- React 19
+- React
 - TypeScript
-- Tailwind CSS (via CDN for portability)
-- Lucide React (Icons)
+- Tailwind CSS
+- Vite
+- Lucide React
 - Google GenAI SDK
 
-## Setup
+## Installation & Setup
 
-1. Ensure you have a valid API Key for Gemini in your environment variables if you plan to use the AI features.
-2. The project uses ES Modules via `esm.sh` and does not require a local build step for the basic preview, but is structured for standard Vite/Webpack pipelines.
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for Production (Vercel)**:
+   ```bash
+   npm run build
+   ```
+
+## Environment Variables
+
+To use the AI features, create a `.env` file in the root directory:
+
+```
+VITE_API_KEY=your_google_gemini_api_key
+```
+
+Note: In Vite, environment variables should be prefixed with `VITE_` to be exposed to the client, or accessed via process.env if using a specific plugin configuration, but usually `import.meta.env.VITE_API_KEY` is the standard.
 
 ## Project Structure
 
